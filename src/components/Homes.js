@@ -1,12 +1,21 @@
 import React from 'react';
-import { Carousel, Navbar, Nav, Container, Button, Card, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Card, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap styles are included
 import './css/home.css';
 
 // Import images from the img folder
 import samsungImage from './img/samsung.png';
 import iphoneImage from './img/iphone.png'; 
-import redmiImage from './img/redmi.png'; // Adjust the filename if needed
+import redmiImage from './img/redmi.png';
+import vivoImage from './img/vivo.png'; 
+import oppoImage from './img/oppo.png'; 
+import motorolaImage from './img/motorola.png'; 
+import huaweiImage from './img/huawei.png';
+import honorImage from './img/honor.png';
+import tecnoImage from './img/tecno.png';
+import redmagicImage from './img/redmagic.png';
+import oneplusImage from './img/oneplus.png'; 
+import sonyImage from './img/sony.png';// Adjust the filename if needed
 
 const Homes = () => {
   return (
@@ -29,62 +38,14 @@ const Homes = () => {
         </Container>
       </Navbar>
 
-      {/* Promotional Carousel */}
-      <Carousel className="promo-carousel">
-        <Carousel.Item>
-          <div className="carousel-content">
-            <img
-              className="product-image"
-              src={samsungImage}
-              alt="Samsung Product"
-            />
-            <div className="promo-text">
-              <h2 className="product-title">Product 1</h2>
-              <p className="product-subtitle">Innovative design for your style</p>
-              <button className="learn-more-button">Learn More</button>
-            </div>
-          </div>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <div className="carousel-content">
-            <img
-              className="product-image"
-              src={iphoneImage}
-              alt="iPhone Product"
-            />
-            <div className="promo-text">
-              <h2 className="product-title">Product 2</h2>
-              <p className="product-subtitle">Experience technology like never before</p>
-              <button className="learn-more-button">Learn More</button>
-            </div>
-          </div>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <div className="carousel-content">
-            <img
-              className="product-image"
-              src={redmiImage}
-              alt="Redmi Product"
-            />
-            <div className="promo-text">
-              <h2 className="product-title">Product 3</h2>
-              <p className="product-subtitle">Experience technology like never before</p>
-              <button className="learn-more-button">Learn More</button>
-            </div>
-          </div>
-        </Carousel.Item>
-      </Carousel>
-
       {/* Redmi Product Section */}
-      <Container className="redmi-product-section mt-5">
+      <Container className="-product-section mt-5">
         <Row>
           <Col md={3}>
             <Card>
               <Card.Img variant="top" src={redmiImage} />
               <Card.Body>
-                <Card.Title>Redmi 13C 5G</Card.Title>
+                <Card.Title>Xiaomi Redmi Note 13 Pro+</Card.Title>
                 <Button variant="primary" className="me-2">Learn More</Button>
                 <Button variant="success">Add to Cart</Button>
               </Card.Body>
@@ -92,9 +53,9 @@ const Homes = () => {
           </Col>
           <Col md={3}>
             <Card>
-              <Card.Img variant="top" src={redmiImage} />
+              <Card.Img variant="top" src={samsungImage} />
               <Card.Body>
-                <Card.Title>Redmi 13</Card.Title>
+                <Card.Title>Samsung Galaxy A55</Card.Title>
                 <Button variant="primary" className="me-2">Learn More</Button>
                 <Button variant="success">Add to Cart</Button>
               </Card.Body>
@@ -102,9 +63,9 @@ const Homes = () => {
           </Col>
           <Col md={3}>
             <Card>
-              <Card.Img variant="top" src={redmiImage} />
+              <Card.Img variant="top" src={iphoneImage} />
               <Card.Body>
-                <Card.Title>Redmi A3x</Card.Title>
+                <Card.Title>Apple iPhone 15</Card.Title>
                 <Button variant="primary" className="me-2">Learn More</Button>
                 <Button variant="success">Add to Cart</Button>
               </Card.Body>
@@ -112,9 +73,89 @@ const Homes = () => {
           </Col>
           <Col md={3}>
             <Card>
-              <Card.Img variant="top" src={redmiImage} />
+              <Card.Img variant="top" src={vivoImage} />
               <Card.Body>
-                <Card.Title>Redmi A3</Card.Title>
+                <Card.Title>Vivo V25 Pro</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>           
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={huaweiImage} />
+              <Card.Body>
+                <Card.Title>Huawei Pura 70 Ultra</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={motorolaImage} />
+              <Card.Body>
+                <Card.Title>Motorola Razr+ 2024</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={oppoImage} />
+              <Card.Body>
+                <Card.Title>Oppo Reno 12 Pro</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={honorImage} />
+              <Card.Body>
+                <Card.Title>Honor x9b</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={sonyImage} />
+              <Card.Body>
+                <Card.Title>Sony Xperia 1V</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={tecnoImage} />
+              <Card.Body>
+                <Card.Title>Tecno Pova 6 Pro</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={redmagicImage} />
+              <Card.Body>
+                <Card.Title>ZTE nubia Red Magic 9 pro</Card.Title>
+                <Button variant="primary" className="me-2">Learn More</Button>
+                <Button variant="success">Add to Cart</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={3}>
+            <Card>
+              <Card.Img variant="top" src={oneplusImage} />
+              <Card.Body>
+                <Card.Title>OnePlus Nord CE 3 Lite</Card.Title>
                 <Button variant="primary" className="me-2">Learn More</Button>
                 <Button variant="success">Add to Cart</Button>
               </Card.Body>
@@ -122,6 +163,8 @@ const Homes = () => {
           </Col>
         </Row>
       </Container>
+      
+
     </div>
   );
 };
