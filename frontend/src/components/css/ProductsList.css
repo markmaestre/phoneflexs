@@ -1,58 +1,82 @@
 .products-page {
-    padding: 20px;
-  }
-  
-  .products-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .product-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-  }
-  
-  .product-image {
-    width: 100%;
-    height: auto;
-  }
-  
-  .product-name {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .product-price {
-    font-size: 16px;
-    color: green;
-  }
-  
-  .product-stock {
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .product-quantity input {
-    width: 50px;
-    padding: 5px;
-  }
-  
-  .product-buttons button {
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .add-to-cart {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .view-details {
-    background-color: #2196F3;
-    color: white;
-  }
-  
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-name {
+  font-size: 1.2em;
+  color: #4a4a4a;
+  padding: 15px;
+  text-align: center;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.product-info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.filter-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.filter-item label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-item input,
+.filter-item select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100px;
+}
+

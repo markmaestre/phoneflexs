@@ -5,13 +5,12 @@ import Register from './components/Register';
 import UserDashboard from './components/UserDashboard';
 import AdminDashboard from './components/AdminDashboard';
 import BrandManagement from './components/BrandManagement';
-import ProductManagement from './components/ProductManagement'; // Import the ProductManagement component
-import Homes from './components/Homes'; // Renamed from Homes to Home
+import ProductManagement from './components/ProductManagement'; // Import ProductManagement component
+import Homes from './components/Homes'; // Renamed Homes to Homes (for /home route)
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProfileUpdate from './components/ProfileUpdate';
-import ProductsList from './components/ProductsList'; // Import the ProductsList component
-import CartPage from './components/CartPage';  // Adjust the path accordingly
-
+import ProductsList from './components/ProductsList'; // Import ProductsList component      
+import OrderHistory from './components/OrderHistory'; // Import OrderHistory component
 
 const App = () => {
   return (
@@ -27,8 +26,8 @@ const App = () => {
           <Route path="/product-management" element={<ProductManagement />} /> {/* Product Management route */}
           <Route path="/home" element={<Homes />} /> {/* Updated to Home */}
           <Route path="/update-profile" element={<ProfileUpdate />} />
-          <Route path="/products" element={<ProductsList />} /> {/* New route for Products List */}
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/products" element={<ProductsList />} /> {/* Route for Products List */}
+          <Route path="/order-history" element={<OrderHistory />} /> {/* Route for Order History */}
         </Routes>
       </div>
     </Router>

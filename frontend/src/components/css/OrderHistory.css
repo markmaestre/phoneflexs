@@ -1,0 +1,53 @@
+.order-history-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .order-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .order-table th,
+  .order-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .order-table th {
+    background-color: #6b2fae;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .order-table td {
+    background-color: #fff;
+  }
+  
+  .order-table tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+  
+  .review-button {
+    background-color: #6b2fae;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .review-button:hover {
+    background-color: #5a2490;
+  }
+  

@@ -53,7 +53,7 @@ const UserDashboard = () => {
     };
 
     const handleNavigateToCart = () => {
-        navigate('/cart');
+        navigate('/order-history');
     };
 
     if (error) return <p className="error">{error}</p>;
@@ -81,7 +81,7 @@ const UserDashboard = () => {
                     <ul>
                         <li>Dashboard</li>
                         <li onClick={handleNavigateToProducts} style={{ cursor: 'pointer' }}>Products</li>
-                        <li onClick={handleNavigateToCart} style={{ cursor: 'pointer' }}>Cart</li> {/* Updated to navigate to /cart */}
+                        <li onClick={handleNavigateToCart} style={{ cursor: 'pointer' }}>order-history</li> {}
                         <li>Transaction</li>
                         <li>Cart History</li>
                         <li>Review and Ratings</li>
