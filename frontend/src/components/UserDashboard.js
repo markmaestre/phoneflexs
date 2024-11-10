@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './css/userDashboard.css';
 
 const UserDashboard = () => {
     const [user, setUser] = useState(null);
@@ -11,7 +12,7 @@ const UserDashboard = () => {
             const token = localStorage.getItem('token');
 
             if (!token) {
-                navigate('/login'); // Redirect to login if no token
+                navigate('/login');
                 return;
             }
 
@@ -31,29 +32,63 @@ const UserDashboard = () => {
                 setUser(data.user);
             } catch (err) {
                 setError(err.message);
-                localStorage.removeItem('token'); // Remove token if error
-                navigate('/login'); // Redirect to login
+                localStorage.removeItem('token');
+                navigate('/login');
             }
         };
 
         fetchUser();
     }, [navigate]);
 
+    const handleLogout = () => {
+        const confirmed = window.confirm('Do you want to logout?');
+        if (confirmed) {
+            localStorage.removeItem('token');
+            navigate('/login');
+        }
+    };
+
+    const handleNavigateToProducts = () => {
+        navigate('/products');
+    };
+
+    const handleNavigateToCart = () => {
+        navigate('/cart');
+    };
+
     if (error) return <p className="error">{error}</p>;
 
     return (
         <div className="dashboard-container">
-            <h2>User Dashboard</h2>
-            {user ? (
-                <div>
-                    <p><strong>Name:</strong> {user.name}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Role:</strong> {user.role}</p>
-                    <p><strong>Address:</strong> {user.address}</p>
+            <aside className="sidebar">
+                <div className="profile-section">
+                    <div className="profile-picture">
+                        {user?.img ? (
+                            <img src={`http://localhost:5000/${user.img}`} alt="Profile" />
+                        ) : (
+                            <img src="profile_placeholder.png" alt="Profile" />
+                        )}
+                    </div>
+                    <h3>{user ? user.name : 'User'}</h3>
+                    <button
+                        onClick={() => navigate('/update-profile')} 
+                        className="settings-button"
+                    >
+                        Settings
+                    </button>
                 </div>
-            ) : (
-                <p>Loading user data...</p>
-            )}
+                <nav>
+                    <ul>
+                        <li>Dashboard</li>
+                        <li onClick={handleNavigateToProducts} style={{ cursor: 'pointer' }}>Products</li>
+                        <li onClick={handleNavigateToCart} style={{ cursor: 'pointer' }}>Cart</li> {/* Updated to navigate to /cart */}
+                        <li>Transaction</li>
+                        <li>Cart History</li>
+                        <li>Review and Ratings</li>
+                    </ul>
+                </nav>
+                <button onClick={handleLogout} className="logout-button">Logout</button>
+            </aside>
         </div>
     );
 };

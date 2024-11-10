@@ -2,9 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authRoutes = require('./routes/auth'); 
+const authRoutes = require('./routes/auth');
 const brandRoutes = require('./routes/brandRoutes');
-const productRoutes = require('./routes/productRoutes'); // Added product routes
+const productRoutes = require('./routes/productRoutes');
+const cartRoutes = require('./routes/cart');  // Import cart routes
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,7 +25,8 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', brandRoutes);
-app.use('/api', productRoutes); // Use product routes
+app.use('/api', productRoutes);
+app.use('/api/cart', cartRoutes);  // Add cart route
 
 // Start the server
 app.listen(PORT, () => {

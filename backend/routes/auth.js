@@ -3,9 +3,26 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const authMiddleware = require('../middleware/authMiddleware');
-const router = express.Router();
 const nodemailer = require('nodemailer');
+const multer = require('multer');
+const path = require('path');
 
+const router = express.Router();
+
+// Multer configuration for file uploads
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Directory to save uploaded images
+    },
+    filename: (req, file, cb) => {
+        const uniqueName = Date.now() + path.extname(file.originalname);
+        cb(null, uniqueName);
+    },
+});
+
+const upload = multer({ storage });
+
+// Nodemailer configuration
 const transporter = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
     port: 2525,
@@ -16,8 +33,9 @@ const transporter = nodemailer.createTransport({
 });
 
 // Registration Route
-router.post('/register', async (req, res) => {
+router.post('/register', upload.single('image'), async (req, res) => {
     const { name, email, password, role, address, confirmPassword } = req.body;
+    const imgPath = req.file ? req.file.path : null; // Get uploaded image path
     try {
         if (password !== confirmPassword) {
             return res.status(400).json({ msg: 'Passwords do not match' });
@@ -33,7 +51,8 @@ router.post('/register', async (req, res) => {
             email,
             password: hashedPassword,
             role: role || 'user',
-            address
+            address,
+            img: imgPath // Save image path to user document
         });
 
         const savedUser = await newUser.save();
@@ -75,7 +94,8 @@ router.get('/verify/:token', async (req, res) => {
     }
 });
 
-// Login Route
+
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -114,6 +134,8 @@ router.get('/me', authMiddleware, async (req, res) => {
     }
 });
 
+
+
 // Fetch Users Route (for admin)
 router.get('/users', authMiddleware, async (req, res) => {
     try {
@@ -125,4 +147,32 @@ router.get('/users', authMiddleware, async (req, res) => {
     }
 });
 
+
+router.post('/update-profile', authMiddleware, upload.single('image'), async (req, res) => {
+    const { name } = req.body;
+    const imgPath = req.file ? req.file.path : null;
+
+    try {
+        const user = await User.findById(req.user);
+        if (!user) return res.status(400).json({ msg: 'User not found' });
+
+        // Update the user's profile data
+        user.name = name || user.name;
+        if (imgPath) user.img = imgPath;
+
+        await user.save();
+
+        res.json({
+            msg: 'Profile updated successfully',
+            user: { name: user.name, email: user.email, img: user.img },
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ msg: 'Server error' });
+    }
+});
+
+
 module.exports = router;
+
+
